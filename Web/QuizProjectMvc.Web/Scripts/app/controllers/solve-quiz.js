@@ -39,7 +39,7 @@
 
             var completedInPercent = (answered / total) * 100;
 
-            self.$progressBar.style = `width:${completedInPercent}%;`;
+            self.$progressBar.style.width = completedInPercent + '%';
 
             return completedInPercent;
         };
@@ -90,8 +90,17 @@
         self.pager = {
             currentPage: 1,
             pageSize: 1,
-            totalPages: self.questionsCount
+            totalPages: self.questionsCount,
+            maxSize: 7
         };
+
+        var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+        if (width < 400) {
+            self.pager.maxSize = 5;
+        }
+        else if (width < 250) {
+            self.pager.maxSize = 2;
+        }
 
         self.$progressBar = document.getElementById('progress');
         self.answeredQuestionsCount = 0;
