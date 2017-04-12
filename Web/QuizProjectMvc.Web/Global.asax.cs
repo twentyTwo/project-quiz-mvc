@@ -10,7 +10,7 @@
     using Data;
     using Helpers;
     using Infrastructure.Mapping;
-    using Configuration = Data.Migrations.Configuration;
+    // using Configuration = Data.Migrations.Configuration;
 
 #pragma warning disable SA1649 // File name must match first type name
     public class MvcApplication : HttpApplication
@@ -21,7 +21,7 @@
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorEngineExtension());
 
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+            // Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
 
             AutofacConfig.RegisterAutofac();
             AreaRegistration.RegisterAllAreas();

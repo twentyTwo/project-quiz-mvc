@@ -2,7 +2,7 @@
 {
     using System;
     using System.Configuration;
-    using Areas.Api.Providers;
+    // using Areas.Api.Providers;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin;
@@ -42,31 +42,31 @@
 
             // Configure the application for OAuth based flow
             const string PublicClientId = "self";
-            var oauthOptions = new OAuthAuthorizationServerOptions
-            {
-                TokenEndpointPath = new PathString("/api/Token"),
-                Provider = new ApplicationOAuthProvider(PublicClientId),
-                AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
+            //var oauthOptions = new OAuthAuthorizationServerOptions
+            //{
+            //    TokenEndpointPath = new PathString("/api/Token"),
+            //    Provider = new ApplicationOAuthProvider(PublicClientId),
+            //    AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
+            //    AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
 
-                // In production mode set AllowInsecureHttp = false
-                AllowInsecureHttp = true
-            };
+            //    // In production mode set AllowInsecureHttp = false
+            //    AllowInsecureHttp = true
+            //};
 
             // Enable the application to use bearer tokens to authenticate users
-            app.UseOAuthBearerTokens(oauthOptions);
+            //app.UseOAuthBearerTokens(oauthOptions);
 
             // Enables the application to temporarily store user information when they are verifying the second factor in the two-factor authentication process.
-            app.UseTwoFactorSignInCookie(DefaultAuthenticationTypes.TwoFactorCookie, TimeSpan.FromMinutes(5));
+            //app.UseTwoFactorSignInCookie(DefaultAuthenticationTypes.TwoFactorCookie, TimeSpan.FromMinutes(5));
 
             // Enables the application to remember the second login verification factor such as phone or email.
             // Once you check this option, your second step of verification during the login process will be remembered on the device where you logged in from.
             // This is similar to the RememberMe option when you log in.
-            app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
+            //app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
-            app.UseGoogleAuthentication(
-                clientId: ConfigurationManager.AppSettings["GoogClientID"],
-                clientSecret: ConfigurationManager.AppSettings["GoogClientSecret"]);
+            //app.UseGoogleAuthentication(
+               // clientId: ConfigurationManager.AppSettings["GoogClientID"],
+              //  clientSecret: ConfigurationManager.AppSettings["GoogClientSecret"]);
         }
     }
 }
